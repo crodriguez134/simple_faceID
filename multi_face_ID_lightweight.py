@@ -32,7 +32,7 @@ def update_memory():
             encoded_pics[key] = temp[0]
         else:
             continue
-    # pickle.dump(encoded_pics, open('encoded_data', 'wb+'))
+            
     with open('encoded_data.pickle', 'wb') as handle:
         pickle.dump(encoded_pics, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
@@ -40,7 +40,6 @@ def update_memory():
 def startup():
     with open('encoded_data.pickle', 'rb') as handle:
         data = pickle.load(handle)
-    # data = pickle.load(open('encoded_data'))
     return data
 
 
@@ -65,7 +64,6 @@ def new_face(name):
         timeout += 1
 
     cv2.imwrite("new_person.jpg", id)
-    # newf = fr.load_image_file("new_person.jpg")
     newdir = image_dir + "/" + name
     os.mkdir(newdir)
     shutil.move("new_person.jpg", newdir)
